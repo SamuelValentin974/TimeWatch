@@ -1,7 +1,7 @@
 [gd_scene load_steps=33 format=3 uid="uid://bdvom4xt10d85"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1y0mn"]
-[ext_resource type="PackedScene" uid="uid://cill0tf64bwyn" path="res://scenes/Bullet.tscn" id="2_m2ohf"]
+[ext_resource type="Resource" uid="uid://bhfyamkk0t00" path="res://ressources/projectile/bullet/basic_bullet_ressource.tres" id="2_nug7i"]
 [ext_resource type="PackedScene" uid="uid://dbsgbvl1bns4r" path="res://scenes/Dash.tscn" id="2_ot6dk"]
 [ext_resource type="Texture2D" uid="uid://fasb5ewyxwae" path="res://assets/player/player-stand/player-stand-1.png" id="3_isvt8"]
 [ext_resource type="Texture2D" uid="uid://b3vvhil31q4x2" path="res://assets/player/player-run/player-run-1.png" id="4_ghwl8"]
@@ -150,7 +150,7 @@ size = Vector2(21.6, 21.8)
 scale = Vector2(4, 4)
 collision_mask = 12
 script = ExtResource("1_1y0mn")
-Bullet = ExtResource("2_m2ohf")
+projectile_ressource = ExtResource("2_nug7i")
 
 [node name="Dash" parent="." instance=ExtResource("2_ot6dk")]
 
@@ -162,7 +162,6 @@ animation = &"dash"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.25, 3.25)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_eb35x")
 
 [node name="AttackTimer" type="Timer" parent="."]

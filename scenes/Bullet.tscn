@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cill0tf64bwyn"]
+[gd_scene load_steps=4 format=3 uid="uid://cill0tf64bwyn"]
 
 [ext_resource type="Script" path="res://scripts/Bullet.gd" id="1_fsh4i"]
 [ext_resource type="Texture2D" uid="uid://dm6i6b78t4370" path="res://assets/bullet.png" id="1_ygkjs"]
@@ -6,13 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r4yvf"]
 size = Vector2(20, 4)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqx0p"]
-size = Vector2(20, 4)
-
 [node name="Bullet" type="CharacterBody2D"]
 scale = Vector2(1.6, 1.6)
 collision_layer = 2
-collision_mask = 4
+collision_mask = 12
 script = ExtResource("1_fsh4i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -22,9 +19,9 @@ texture = ExtResource("1_ygkjs")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_r4yvf")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="VisibleNotifier" type="VisibleOnScreenNotifier2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_uqx0p")
+[node name="DeathTimer" type="Timer" parent="."]
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_exited" from="VisibleNotifier" to="." method="_on_visible_notifier_screen_exited"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

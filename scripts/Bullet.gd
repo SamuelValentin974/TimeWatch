@@ -1,26 +1,25 @@
+class_name Bullet
 extends CharacterBody2D
 
-var SPEED = 600.0
-var destroyed = false
+@onready var sprite_2d = $Sprite2D as Sprite2D
+@onready var visible_notifier = $VisibleNotifier as VisibleOnScreenNotifier2D
+@onready var death_timer = $DeathTimer as Timer
+
+var direction : Vector2 = Vector2.RIGHT
+var speed = 600.0
+var damage : float = 0.0
 
 func _physics_process(delta):
-	move_and_collide(velocity * delta)
+	move(delta)
 
-func set_direction(direction):
-	velocity = direction * SPEED
+func move(delta: float) -> void:
+	move_and_collide(direction * delta * speed)
 
 func set_speed(factor):
-	SPEED *= factor
+	speed *= factor
 
-func destroy():
-	if !destroyed:
-		destroyed = true
-		call_deferred("free")
+func _on_visible_notifier_screen_exited():
+	death_timer.start(0.8)
 
-func _on_body_entered(body):
-	print('TOUCHED')	
-	if body != self:
-		if "Bullet" in body.name:
-			print('DESTROY')
-			body.destroy()
-		
+func _on_death_timer_timeout():
+	queue_free()

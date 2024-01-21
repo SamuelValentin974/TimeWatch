@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjpwfgt12rhvs"]
+
+[ext_resource type="PackedScene" uid="uid://bfit664rguliw" path="res://scenes/managers/projectile_manager.tscn" id="1_xp1ah"]
+[ext_resource type="PackedScene" uid="uid://bdvom4xt10d85" path="res://scenes/player.tscn" id="2_5ivho"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Level_Container" type="Node2D" parent="."]
+
+[node name="Manager_Container" type="Node2D" parent="Level_Container"]
+
+[node name="Projectile_Manager" parent="Level_Container/Manager_Container" instance=ExtResource("1_xp1ah")]
+
+[node name="Projectile_Container" type="Node2D" parent="Level_Container" groups=["Projectile_container"]]
+
+[node name="Entity_Container" type="Node2D" parent="Level_Container"]
+
+[node name="Player" parent="Level_Container/Entity_Container" instance=ExtResource("2_5ivho")]
