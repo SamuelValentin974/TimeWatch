@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name PBullet
 
 var SPEED = 600.0
 var destroyed = false

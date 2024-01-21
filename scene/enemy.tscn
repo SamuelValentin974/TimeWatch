@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cuaertkdynmc7"]
+[gd_scene load_steps=27 format=3 uid="uid://cuaertkdynmc7"]
 
 [ext_resource type="Texture2D" uid="uid://cwsadak3o7a0v" path="res://asset/Enemies/No Outlines/enemies x1.png" id="1_8xi5o"]
 [ext_resource type="Script" path="res://script/enemy.gd" id="1_tibn6"]
@@ -110,7 +110,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sk47a")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 10.0
 }, {
@@ -169,14 +169,41 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jvir6"]
 size = Vector2(12, 29)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_x7kk5"]
+radius = 12.798
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7b127"]
+size = Vector2(13, 30)
+
 [node name="enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 19
 script = ExtResource("1_tibn6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ooacs")
-animation = &"idle"
+animation = &"death"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Col" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, 1.5)
 shape = SubResource("RectangleShape2D_jvir6")
+
+[node name="DetectArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
+visible = false
+scale = Vector2(10.08, 10.08)
+shape = SubResource("CircleShape2D_x7kk5")
+
+[node name="BulletArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletArea"]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_7b127")
+
+[connection signal="body_entered" from="DetectArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="BulletArea" to="." method="_on_bullet_area_body_entered"]

@@ -36,9 +36,10 @@ shader_parameter/move_intensity = 0.5
 
 [node name="DashGhost" type="Sprite2D"]
 modulate = Color(0.454902, 0.454902, 0.454902, 1)
-z_index = -1
+light_mask = 16
+visibility_layer = 16
+z_index = 1
 texture_filter = 1
 material = SubResource("ShaderMaterial_y07w4")
-scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_mgqpg")
 script = ExtResource("1_4sc4r")
