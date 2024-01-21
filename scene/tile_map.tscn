@@ -2831,3 +2831,7 @@ sources/0 = SubResource("TileSetAtlasSource_qic31")
 [node name="TileMap" type="TileMap"]
 tile_set = SubResource("TileSet_dow4h")
 format = 2
+layer_0/name = "floor"
+layer_1/name = "wall"
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array()
