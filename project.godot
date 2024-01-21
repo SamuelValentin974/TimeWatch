@@ -11,8 +11,17 @@ config_version=5
 [application]
 
 config/name="TimeWatch"
+run/main_scene="res://scene/level_1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=480
+window/size/viewport_height=240
+window/size/window_width_override=1440
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
 
 [input]
 
@@ -50,3 +59,20 @@ power={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_render/layer_1="ground"
+2d_render/layer_2="walls"
+2d_render/layer_3="props"
+2d_render/layer_4="enemies"
+2d_render/layer_5="player"
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Bullet_Player"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Bullet_Enemy"
+2d_physics/layer_5="Environment"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
