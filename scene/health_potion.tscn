@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://chqyw28qjuve3"]
+
+[ext_resource type="Script" path="res://script/health_potion.gd" id="1_60bvr"]
+[ext_resource type="Texture2D" uid="uid://bmjsr1y2dkn56" path="res://asset/Props.png" id="1_ywfgi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4yuw1"]
+radius = 20.025
+
+[node name="HealthPotion" type="Area2D"]
+collision_layer = 16
+collision_mask = 15
+script = ExtResource("1_60bvr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ywfgi")
+region_enabled = true
+region_rect = Rect2(17.4132, 226.131, 12.7536, 14.7157)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+shape = SubResource("CircleShape2D_4yuw1")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -3.0
+offset_top = -25.0
+offset_right = 37.0
+offset_bottom = 15.0
+theme_override_font_sizes/normal_font_size = 13
+text = "F"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
