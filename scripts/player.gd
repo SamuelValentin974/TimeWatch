@@ -1,48 +1,41 @@
+class_name PlayerEntity
 extends CharacterBody2D
 class_name Player
 
 @onready var dash = $Dash
 @onready var sprite = $sprite
-@onready var attack_timer = $AttackTimer
+@onready var fire_timer = $AttackTimer
 @onready var ultime_timer = $UltimeTimer
 
-@export var Bullet : PackedScene
+@export var fire_rate : float = 0.2
+@export var projectile_ressource : ProjectileBaseRessource = null
 
 const dash_speed = 40000
 const move_speed = 9000
 var speed = 0
 const dash_duration = 0.2
 var is_attacking = false
-var ult = false
-var can_attack = true
+var can_ult = false
+var can_fire = true
+
+func _ready():
+	fire_timer.connect("timeout", set_can_fire)
+	ultime_timer.connect("timeout", set_can_ult)
+	fire_timer.wait_time = fire_rate
+	
+func _process(_delta):
+	dashing()
 
 func _physics_process(delta):
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")).normalized()
+	fire_projectile(direction)
+	cast_ultimate()	
 
-	if Input.is_action_just_pressed("dash") and dash.can_dash and !dash.is_dashing() and !is_attacking:
-		dash.start_dash(sprite, dash_duration)
-		can_attack = true
-
-	if Input.is_action_just_pressed("shoot") and can_attack and velocity.x != 0:
-		can_attack = false
-		is_attacking = true
-		attack_timer.start()
-		var bullet = Bullet.instantiate()
-		get_parent().add_child(bullet)
-		bullet.global_position = global_position + (50 * direction)
-		if ult:
-			bullet.set_speed(Global.speed_factor)
-		else:
-			bullet.set_speed(1)
-		bullet.set_direction(direction)
-		
-	speed = dash_speed if dash.is_dashing() else move_speed
+	if direction:
+		speed = dash_speed if dash.is_dashing() else move_speed
+	else:
+		speed = Vector2.ZERO
 	sprite.play()
-	
-	if Input.is_action_just_pressed("special") and !ult:
-		print("CASTING ULTIMATE")
-		ult = true
-		ultime_timer.start()
 
 	velocity = direction * speed * delta
 	move_and_slide()
@@ -56,10 +49,32 @@ func _physics_process(delta):
 		sprite.flip_h = velocity.x < 0
 	elif  velocity.x == 0:
 		sprite.animation = "idle"
+		
+func dashing() -> void:
+	if Input.is_action_just_pressed("dash") and dash.can_dash and !dash.is_dashing() and !is_attacking:
+		dash.start_dash(sprite, dash_duration)
+		can_fire = true
+		print("DASHING")
 
-func _on_shooting_timeout():
+func cast_ultimate() -> void:
+	if Input.is_action_just_pressed("ultime") and can_ult and !is_attacking:
+		can_ult = false
+		ultime_timer.start()
+		print("ULTIMATE")
+		Global.speed_factor = 0.3
+
+func fire_projectile(direction : Vector2) -> void:
+	if Input.is_action_just_pressed("fire") and can_fire and velocity.x != 0:
+		can_fire = false
+		fire_timer.start()
+		is_attacking = true
+		print("BANG")
+		SignalBus.emit_fire(projectile_ressource, position + (velocity / 3), direction)
+
+func set_can_fire() -> void:
+	can_fire = true
 	is_attacking = false
-	can_attack = true
 
-func _on_ultime_timer_timeout():
-	ult = false
+func set_can_ult() -> void:
+	can_ult = true
+	Global.speed_factor = 1

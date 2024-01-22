@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ProjectileBaseRessource" load_steps=3 format=3 uid="uid://bhfyamkk0t00"]
+
+[ext_resource type="Script" path="res://ressources/projectile/Projectile_Base_Ressource.gd" id="1_0gcbe"]
+[ext_resource type="Texture2D" uid="uid://dm6i6b78t4370" path="res://assets/bullet.png" id="1_2gsp0"]
+
+[resource]
+script = ExtResource("1_0gcbe")
+projectile_sprite = ExtResource("1_2gsp0")
+projectile_speed = 400.0
