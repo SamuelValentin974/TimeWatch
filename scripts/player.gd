@@ -1,21 +1,31 @@
 extends CharacterBody2D
 class_name Player
 
+signal healthChanged
+
 @onready var dash = $Dash
 @onready var sprite = $sprite
 @onready var fire_timer = $AttackTimer
 @onready var ultime_timer = $UltimeTimer
 
+@onready var max_health = 100
+@onready var current_health: int = max_health
+
 @export var fire_rate : float = 0.2
 @export var projectile_ressource : ProjectileBaseRessource = null
+@export var audio : AudioStream
 
-const dash_speed = 40000
+const dash_speed = 35000
 const move_speed = 9000
 var speed = 0
 const dash_duration = 0.2
 var is_attacking = false
-var can_ult = false
+var can_ult = true
 var can_fire = true
+var up = Vector2(0,-1)
+var down = Vector2(0,1)
+var left = Vector2(-1,0)
+var right = Vector2(1,0)
 
 func _ready():
 	fire_timer.connect("timeout", set_can_fire)
@@ -28,19 +38,22 @@ func _process(_delta):
 func _physics_process(delta):
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")).normalized()
 	fire_projectile(direction)
-	cast_ultimate()	
+	cast_ultimate()
 
 	if direction:
 		speed = dash_speed if dash.is_dashing() else move_speed
 	else:
 		speed = Vector2.ZERO
-	sprite.play()
-
 	velocity = direction * speed * delta
 	move_and_slide()
+	sprite.play()
 
-	if is_attacking:
+	if is_attacking and velocity.x == 0:
+		sprite.animation = "shoot_up" if direction == up else "snipe"
+		AudioManager.shoot.play()
+	elif is_attacking and velocity.x != 0:
 		sprite.animation = "shoot"
+		AudioManager.shoot.play()
 	elif dash.is_dashing():
 		sprite.animation = "dash"
 	elif velocity.x != 0:
@@ -51,29 +64,39 @@ func _physics_process(delta):
 		
 func dashing() -> void:
 	if Input.is_action_just_pressed("dash") and dash.can_dash and !dash.is_dashing() and !is_attacking:
+		AudioManager.dash.play()
 		dash.start_dash(sprite, dash_duration)
 		can_fire = true
 		print("DASHING")
 
 func cast_ultimate() -> void:
-	if Input.is_action_just_pressed("special") and can_ult and !is_attacking:
+	if Input.is_action_just_pressed("special") and can_ult:
+		AudioManager.ult.play()
 		can_ult = false
+		can_fire = false
 		ultime_timer.start()
 		print("ULTIMATE")
 		Global.speed_factor = 0.3
 
 func fire_projectile(direction : Vector2) -> void:
-	if Input.is_action_just_pressed("shoot") and can_fire and velocity.x != 0:
+	if Input.is_action_just_pressed("shoot") and can_fire:
 		can_fire = false
+		can_ult = false
 		fire_timer.start()
 		is_attacking = true
 		print("BANG")
-		SignalBus.emit_fire(projectile_ressource, position + (velocity / 3), direction)
+		if direction:
+			SignalBus.emit_fire(projectile_ressource, position + (velocity / 2.5), direction)
+		else:
+			direction = left if sprite.flip_h else right
+			SignalBus.emit_fire(projectile_ressource, position + (Vector2(-50,-5) if sprite.flip_h else Vector2(50,-5)), direction)
 
 func set_can_fire() -> void:
 	can_fire = true
+	can_ult = true
 	is_attacking = false
 
 func set_can_ult() -> void:
 	can_ult = true
+	can_fire = true
 	Global.speed_factor = 1

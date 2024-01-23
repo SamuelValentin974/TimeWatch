@@ -15,7 +15,8 @@ void fragment() {
         float move_factor = sin(TIME * move_speed) * 0.5 + 0.5;
         
         vec3 moved_color = texture_color.rgb;
-        moved_color.r += move_intensity * move_factor;
+        moved_color.r += move_intensity * move_factor * 0.8;
+        moved_color.g += move_intensity * move_factor * 0.5;
         moved_color.b += move_intensity * move_factor;
 
         COLOR = vec4(moved_color, texture_color.a);

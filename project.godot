@@ -17,9 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://scripts/Global.gd"
+Global="*res://autoloads/Global.gd"
 SignalBus="*res://autoloads/SignalBus.gd"
 NodeExtensions="*res://autoloads/NodeExtensions.gd"
+AudioManager="*res://scenes/AudioManager.tscn"
 
 [display]
 
