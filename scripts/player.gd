@@ -1,4 +1,3 @@
-class_name PlayerEntity
 extends CharacterBody2D
 class_name Player
 
@@ -57,14 +56,14 @@ func dashing() -> void:
 		print("DASHING")
 
 func cast_ultimate() -> void:
-	if Input.is_action_just_pressed("ultime") and can_ult and !is_attacking:
+	if Input.is_action_just_pressed("special") and can_ult and !is_attacking:
 		can_ult = false
 		ultime_timer.start()
 		print("ULTIMATE")
 		Global.speed_factor = 0.3
 
 func fire_projectile(direction : Vector2) -> void:
-	if Input.is_action_just_pressed("fire") and can_fire and velocity.x != 0:
+	if Input.is_action_just_pressed("shoot") and can_fire and velocity.x != 0:
 		can_fire = false
 		fire_timer.start()
 		is_attacking = true

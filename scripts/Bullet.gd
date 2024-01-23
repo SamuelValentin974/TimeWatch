@@ -1,4 +1,3 @@
-class_name Bullet
 extends CharacterBody2D
 class_name PBullet
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpyrnxy34dwhk"]
+[gd_scene load_steps=11 format=3 uid="uid://bpyrnxy34dwhk"]
 
 [ext_resource type="Script" path="res://script/levels.gd" id="1_cp0a5"]
 [ext_resource type="PackedScene" uid="uid://csq02qwho0eks" path="res://scene/tile_map.tscn" id="1_g05eu"]
 [ext_resource type="PackedScene" uid="uid://cuaertkdynmc7" path="res://scene/enemy.tscn" id="1_ogsow"]
+[ext_resource type="PackedScene" uid="uid://cv5gjrki1aseb" path="res://scene/level_2.tscn" id="2_vcynh"]
 [ext_resource type="PackedScene" uid="uid://bdvom4xt10d85" path="res://scenes/player.tscn" id="3_6lkiq"]
 [ext_resource type="PackedScene" uid="uid://b3gh8frrfa5sc" path="res://scene/prop_table.tscn" id="4_gutjs"]
 [ext_resource type="PackedScene" uid="uid://cf0bh05j8vehp" path="res://scene/prop_box.tscn" id="5_nrxq8"]
@@ -10,11 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://chqyw28qjuve3" path="res://scene/health_potion.tscn" id="7_el2k0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l01ru"]
-size = Vector2(33, 37)
+size = Vector2(29, 37)
 
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_cp0a5")
-_isFinalLevel = true
+_nextScene = ExtResource("2_vcynh")
 
 [node name="TileMap" parent="." instance=ExtResource("1_g05eu")]
 scale = Vector2(0.999089, 1)

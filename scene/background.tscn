@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://phtcxu3htdaf"]
+
+[ext_resource type="Texture2D" uid="uid://5ilx5ij02gen" path="res://asset/2/Night/1.png" id="1_jcp10"]
+[ext_resource type="Script" path="res://script/background.gd" id="1_qv4s1"]
+[ext_resource type="Texture2D" uid="uid://pyun0leknheq" path="res://asset/2/Night/2.png" id="2_5xygi"]
+[ext_resource type="Texture2D" uid="uid://d2x5rtqvt3wdd" path="res://asset/2/Night/3.png" id="3_0ny1j"]
+[ext_resource type="Texture2D" uid="uid://b3bphvqvvxkpy" path="res://asset/2/Night/4.png" id="4_owbnm"]
+[ext_resource type="Texture2D" uid="uid://c8ocuqgpdvbyy" path="res://asset/2/Night/5.png" id="5_ikg4v"]
+
+[node name="Background" type="ParallaxBackground"]
+script = ExtResource("1_qv4s1")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(576, 0)
+
+[node name="bg1" type="Sprite2D" parent="ParallaxLayer"]
+texture_repeat = 2
+position = Vector2(288, 78)
+texture = ExtResource("1_jcp10")
+region_enabled = true
+region_rect = Rect2(0, 0, 576, 324)
+
+[node name="bg2" type="Sprite2D" parent="ParallaxLayer"]
+texture_repeat = 2
+position = Vector2(288, 78)
+texture = ExtResource("2_5xygi")
+region_enabled = true
+region_rect = Rect2(0, 0, 576, 324)
+
+[node name="bg3" type="Sprite2D" parent="ParallaxLayer"]
+texture_repeat = 2
+position = Vector2(288, 78)
+texture = ExtResource("3_0ny1j")
+region_enabled = true
+region_rect = Rect2(0, 0, 576, 324)
+
+[node name="bg4" type="Sprite2D" parent="ParallaxLayer"]
+texture_repeat = 2
+position = Vector2(288, 78)
+texture = ExtResource("4_owbnm")
+region_enabled = true
+region_rect = Rect2(0, 0, 576, 324)
+
+[node name="bg5" type="Sprite2D" parent="ParallaxLayer"]
+texture_repeat = 2
+position = Vector2(287, 82)
+texture = ExtResource("5_ikg4v")
+region_enabled = true
+region_rect = Rect2(0, 0, 576, 324)

@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhbiiwv5ykypl"]
+
+[ext_resource type="PackedScene" uid="uid://phtcxu3htdaf" path="res://scene/background.tscn" id="1_0rnxm"]
+[ext_resource type="Script" path="res://script/menu_game.gd" id="1_a1kfa"]
+[ext_resource type="FontFile" uid="uid://dct8501q0qoa0" path="res://asset/fonts/Kenney Pixel Square.ttf" id="2_2svk8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hxpsn"]
+font = ExtResource("2_2svk8")
+font_color = Color(0.2, 0, 0.643137, 1)
+outline_size = 1
+
+[node name="MenuGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a1kfa")
+
+[node name="Background" parent="." instance=ExtResource("1_0rnxm")]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.0
+offset_top = 25.0
+offset_right = 44.0
+offset_bottom = 48.0
+grow_horizontal = 2
+text = "TimeWatch
+"
+label_settings = SubResource("LabelSettings_hxpsn")
+
+[node name="BtPlay" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = 5.0
+offset_right = 24.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2, 0, 0.643137, 1)
+theme_override_fonts/font = ExtResource("2_2svk8")
+text = "PLAY"
+
+[node name="BtQuit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = 49.0
+offset_right = 24.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2, 0, 0.643137, 1)
+theme_override_fonts/font = ExtResource("2_2svk8")
+text = "QUIT
+"
+
+[connection signal="pressed" from="BtPlay" to="." method="_on_bt_play_pressed"]
+[connection signal="pressed" from="BtQuit" to="." method="_on_bt_quit_pressed"]
