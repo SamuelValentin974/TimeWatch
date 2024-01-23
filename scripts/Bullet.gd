@@ -9,7 +9,7 @@ var direction : Vector2 = Vector2.RIGHT
 var speed = 600.0
 var damage : float = 0.0
 
-func _physics_process(delta):
+func  _process(delta):
 	move(delta)
 
 func move(delta: float) -> void:

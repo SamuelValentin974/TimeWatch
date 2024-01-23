@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjpwfgt12rhvs"]
+[gd_scene load_steps=6 format=3 uid="uid://bjpwfgt12rhvs"]
 
 [ext_resource type="PackedScene" uid="uid://bfit664rguliw" path="res://scenes/managers/projectile_manager.tscn" id="1_xp1ah"]
 [ext_resource type="PackedScene" uid="uid://bdvom4xt10d85" path="res://scenes/player.tscn" id="2_5ivho"]
+[ext_resource type="Script" path="res://scripts/Hud/ProgressBar.gd" id="3_2eys6"]
+[ext_resource type="Texture2D" uid="uid://dhua6ajteqdt6" path="res://assets/Hud/healthbarUnder.png" id="3_gbcxv"]
+[ext_resource type="Texture2D" uid="uid://cjoc2mjqcij7p" path="res://assets/Hud/healthbarProgress.png" id="4_cl8sq"]
 
 [node name="Main" type="Node2D"]
 
@@ -16,3 +19,17 @@
 [node name="Entity_Container" type="Node2D" parent="Level_Container"]
 
 [node name="Player" parent="Level_Container/Entity_Container" instance=ExtResource("2_5ivho")]
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="Health" type="TextureProgressBar" parent="Hud" node_paths=PackedStringArray("player")]
+texture_filter = 1
+offset_left = 467.0
+offset_top = 7.0
+offset_right = 647.0
+offset_bottom = 27.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_gbcxv")
+texture_progress = ExtResource("4_cl8sq")
+script = ExtResource("3_2eys6")
+player = NodePath("../../Level_Container/Entity_Container/Player")
