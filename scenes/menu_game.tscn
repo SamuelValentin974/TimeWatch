@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhbiiwv5ykypl"]
 
-[ext_resource type="PackedScene" uid="uid://phtcxu3htdaf" path="res://scene/background.tscn" id="1_0rnxm"]
-[ext_resource type="Script" path="res://script/menu_game.gd" id="1_a1kfa"]
-[ext_resource type="FontFile" uid="uid://dct8501q0qoa0" path="res://asset/fonts/Kenney Pixel Square.ttf" id="2_2svk8"]
+[ext_resource type="Script" path="res://scripts/menu_game.gd" id="1_1x8f1"]
+[ext_resource type="PackedScene" uid="uid://phtcxu3htdaf" path="res://scenes/background.tscn" id="2_04vco"]
+[ext_resource type="FontFile" uid="uid://dct8501q0qoa0" path="res://asset/fonts/Kenney Pixel Square.ttf" id="3_ej4y5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hxpsn"]
-font = ExtResource("2_2svk8")
+font = ExtResource("3_ej4y5")
 font_color = Color(0.2, 0, 0.643137, 1)
 outline_size = 1
 
@@ -16,9 +16,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_a1kfa")
+script = ExtResource("1_1x8f1")
 
-[node name="Background" parent="." instance=ExtResource("1_0rnxm")]
+[node name="Background" parent="." instance=ExtResource("2_04vco")]
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -48,7 +48,7 @@ offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.2, 0, 0.643137, 1)
-theme_override_fonts/font = ExtResource("2_2svk8")
+theme_override_fonts/font = ExtResource("3_ej4y5")
 text = "PLAY"
 
 [node name="BtQuit" type="Button" parent="."]
@@ -65,7 +65,7 @@ offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.2, 0, 0.643137, 1)
-theme_override_fonts/font = ExtResource("2_2svk8")
+theme_override_fonts/font = ExtResource("3_ej4y5")
 text = "QUIT
 "
 

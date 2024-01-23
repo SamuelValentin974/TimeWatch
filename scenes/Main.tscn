@@ -22,7 +22,7 @@
 
 [node name="Hud" type="CanvasLayer" parent="."]
 
-[node name="Health" type="TextureProgressBar" parent="Hud" node_paths=PackedStringArray("player")]
+[node name="Health" type="TextureProgressBar" parent="Hud"]
 texture_filter = 1
 offset_left = 467.0
 offset_top = 7.0
@@ -32,4 +32,3 @@ nine_patch_stretch = true
 texture_under = ExtResource("3_gbcxv")
 texture_progress = ExtResource("4_cl8sq")
 script = ExtResource("3_2eys6")
-player = NodePath("../../Level_Container/Entity_Container/Player")

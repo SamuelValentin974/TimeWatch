@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnahiim3dnobk"]
+[gd_scene load_steps=6 format=3 uid="uid://dhxsxhdajhce2"]
 
 [ext_resource type="Script" path="res://autoloads/AudioManager.gd" id="1_2a0xm"]
 [ext_resource type="AudioStream" uid="uid://bhwig6mcig8c" path="res://assets/audio/shoot.mp3" id="2_ilu2s"]
@@ -22,4 +22,4 @@ volume_db = -8.0
 
 [node name="dash" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_x10wk")
-volume_db = -5.0
+volume_db = -10.0

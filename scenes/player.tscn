@@ -1,10 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://bdvom4xt10d85"]
+[gd_scene load_steps=33 format=3 uid="uid://bdvom4xt10d85"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1y0mn"]
 [ext_resource type="Resource" uid="uid://bhfyamkk0t00" path="res://ressources/projectile/bullet/basic_bullet_ressource.tres" id="2_nug7i"]
 [ext_resource type="PackedScene" uid="uid://dbsgbvl1bns4r" path="res://scenes/Dash.tscn" id="2_ot6dk"]
 [ext_resource type="Texture2D" uid="uid://fasb5ewyxwae" path="res://assets/player/player-stand/player-stand-1.png" id="3_isvt8"]
-[ext_resource type="AudioStream" uid="uid://bhwig6mcig8c" path="res://assets/audio/shoot.mp3" id="3_ni3vl"]
 [ext_resource type="Texture2D" uid="uid://b3vvhil31q4x2" path="res://assets/player/player-run/player-run-1.png" id="4_ghwl8"]
 [ext_resource type="Texture2D" uid="uid://clxw4a78dg05v" path="res://assets/player/player-stand/player-stand-2.png" id="4_i60cp"]
 [ext_resource type="Texture2D" uid="uid://cfosglswcx42u" path="res://assets/player/player-run/player-run-2.png" id="5_d7slr"]
@@ -18,8 +17,16 @@
 [ext_resource type="Texture2D" uid="uid://ddvcpub6o7cpp" path="res://assets/player/player-run/player-run-8.png" id="11_7whh8"]
 [ext_resource type="Texture2D" uid="uid://c4jqbrlsqaa52" path="res://assets/player/player-run/player-run-9.png" id="12_gw6bt"]
 [ext_resource type="Texture2D" uid="uid://cpj3fg5s54ei8" path="res://assets/player/player-run/player-run-10.png" id="13_ac5ty"]
+[ext_resource type="Texture2D" uid="uid://bxxd4lw3052sa" path="res://assets/player/player-run-shot/player-run-shot-1.png" id="17_a5tl3"]
 [ext_resource type="Texture2D" uid="uid://61h7odwkgw68" path="res://assets/player/player-run-shot/player-run-shot-2.png" id="18_t6gwj"]
-[ext_resource type="Texture2D" uid="uid://6tvydrmy8pmk" path="res://assets/player/player-shoot-up/player-shoot-up.png" id="19_idwfx"]
+[ext_resource type="Texture2D" uid="uid://cy5pj51557xsp" path="res://assets/player/player-run-shot/player-run-shot-3.png" id="19_wod1k"]
+[ext_resource type="Texture2D" uid="uid://c38tj26jg0squ" path="res://assets/player/player-run-shot/player-run-shot-4.png" id="20_chpxx"]
+[ext_resource type="Texture2D" uid="uid://cqxyljyfci2ge" path="res://assets/player/player-run-shot/player-run-shot-5.png" id="21_obgxt"]
+[ext_resource type="Texture2D" uid="uid://bsmdgegkdybes" path="res://assets/player/player-run-shot/player-run-shot-6.png" id="22_s6mfg"]
+[ext_resource type="Texture2D" uid="uid://boymwva2mqq7n" path="res://assets/player/player-run-shot/player-run-shot-7.png" id="23_sj54h"]
+[ext_resource type="Texture2D" uid="uid://chlk7a6d6ujp7" path="res://assets/player/player-run-shot/player-run-shot-8.png" id="24_0mqcs"]
+[ext_resource type="Texture2D" uid="uid://bmj8c6diceiev" path="res://assets/player/player-run-shot/player-run-shot-9.png" id="25_crjx7"]
+[ext_resource type="Texture2D" uid="uid://bntgnla73ca23" path="res://assets/player/player-run-shot/player-run-shot-10.png" id="26_v7ypt"]
 [ext_resource type="Texture2D" uid="uid://cbxrmil73fvwr" path="res://assets/player/player shooting/01.png" id="28_texf1"]
 [ext_resource type="Texture2D" uid="uid://161ycw5hqkcu" path="res://assets/player/player shooting/02.png" id="29_bq86x"]
 [ext_resource type="Texture2D" uid="uid://vyfwb4qcir5l" path="res://assets/player/player shooting/03.png" id="30_jfb0j"]
@@ -49,7 +56,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 8.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -88,18 +95,37 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("17_a5tl3")
+}, {
+"duration": 1.0,
 "texture": ExtResource("18_t6gwj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_wod1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_chpxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_obgxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_s6mfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_sj54h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_0mqcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_crjx7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_v7ypt")
 }],
 "loop": true,
 "name": &"shoot",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("19_idwfx")
-}],
-"loop": true,
-"name": &"shoot_up",
 "speed": 10.0
 }, {
 "frames": [{
@@ -127,7 +153,6 @@ scale = Vector2(4, 4)
 collision_mask = 28
 script = ExtResource("1_1y0mn")
 projectile_ressource = ExtResource("2_nug7i")
-audio = ExtResource("3_ni3vl")
 
 [node name="Dash" parent="." instance=ExtResource("2_ot6dk")]
 
@@ -135,7 +160,7 @@ audio = ExtResource("3_ni3vl")
 texture_filter = 1
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_tcrr4")
-animation = &"idle"
+animation = &"dash"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.75, 1.5)
@@ -151,3 +176,4 @@ wait_time = 2.0
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_shooting_timeout"]
+[connection signal="timeout" from="UltimeTimer" to="." method="_on_ultime_timer_timeout"]

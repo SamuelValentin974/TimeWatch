@@ -7,7 +7,7 @@ func _ready():
 	SignalBus.connect("fire", build_projectile)
 	
 func build_projectile(ressource : ProjectileBaseRessource, location: Vector2, direction : Vector2) -> void:
-	var new_bullet = base_bullet_scene.instantiate() as Bullet
+	var new_bullet = base_bullet_scene.instantiate() as PBullet
 	
 	new_bullet.sprite_2d = ressource.projectile_sprite
 	new_bullet.position = location
@@ -17,7 +17,7 @@ func build_projectile(ressource : ProjectileBaseRessource, location: Vector2, di
 
 	spawn_projectile(new_bullet)
 	
-func spawn_projectile(bullet : Bullet) -> void:
+func spawn_projectile(bullet : PBullet) -> void:
 	var projectile_container = NodeExtensions.get_projectile_container()
 	
 	if projectile_container == null:

@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://cv5gjrki1aseb"]
 
-[ext_resource type="Script" path="res://script/levels.gd" id="1_0yepx"]
-[ext_resource type="PackedScene" uid="uid://csq02qwho0eks" path="res://scene/tile_map.tscn" id="1_k2ei3"]
+[ext_resource type="Script" path="res://scripts/levels.gd" id="1_0yepx"]
+[ext_resource type="PackedScene" uid="uid://csq02qwho0eks" path="res://scenes/tile_map.tscn" id="1_k2ei3"]
 [ext_resource type="PackedScene" uid="uid://bdvom4xt10d85" path="res://scenes/player.tscn" id="2_ra0gn"]
 [ext_resource type="Texture2D" uid="uid://c1kh7u4huq2uq" path="res://icon.svg" id="4_wycot"]
-[ext_resource type="PackedScene" uid="uid://cuaertkdynmc7" path="res://scene/enemy.tscn" id="5_rusew"]
+[ext_resource type="PackedScene" uid="uid://cuaertkdynmc7" path="res://scenes/enemy.tscn" id="5_rusew"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q65cj"]
 size = Vector2(128, 51)
@@ -32,6 +32,7 @@ texture = ExtResource("4_wycot")
 [node name="Player" parent="." instance=ExtResource("2_ra0gn")]
 z_index = 20
 position = Vector2(163, 224)
+fire_rate = null
 
 [node name="Enemies" type="Node" parent="."]
 

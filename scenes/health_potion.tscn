@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://chqyw28qjuve3"]
 
-[ext_resource type="Script" path="res://script/health_potion.gd" id="1_60bvr"]
+[ext_resource type="Script" path="res://scripts/health_potion.gd" id="1_60bvr"]
 [ext_resource type="Texture2D" uid="uid://bmjsr1y2dkn56" path="res://asset/Props.png" id="1_ywfgi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4yuw1"]
