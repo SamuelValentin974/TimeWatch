@@ -173,7 +173,7 @@ size = Vector2(12, 29)
 radius = 12.798
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7b127"]
-size = Vector2(13, 30)
+size = Vector2(15, 34)
 
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 4

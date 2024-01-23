@@ -19,7 +19,7 @@ func _on_area_2d_body_entered(body):
 		sprite.play("run")
 
 func _on_bullet_area_body_entered(body):
-	if body is PBullet:
+	if body is Bullet:
 		body.queue_free()
 		if life > 1:
 			life -= 1
@@ -28,4 +28,6 @@ func _on_bullet_area_body_entered(body):
 			sprite.play("death")
 			await get_tree().create_timer(0.75).timeout
 			queue_free()
+	elif body is Player:
+		body.take_hit()
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bpyrnxy34dwhk"]
+[gd_scene load_steps=11 format=3 uid="uid://bpyrnxy34dwhk"]
 
 [ext_resource type="Script" path="res://scripts/levels.gd" id="1_cp0a5"]
 [ext_resource type="PackedScene" uid="uid://csq02qwho0eks" path="res://scenes/tile_map.tscn" id="1_g05eu"]
@@ -9,8 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://cf0bh05j8vehp" path="res://scenes/prop_box.tscn" id="5_nrxq8"]
 [ext_resource type="PackedScene" uid="uid://lwknbkmlu6dp" path="res://scenes/kevin_poster.tscn" id="6_vodpi"]
 [ext_resource type="PackedScene" uid="uid://chqyw28qjuve3" path="res://scenes/health_potion.tscn" id="7_el2k0"]
-[ext_resource type="PackedScene" uid="uid://dair4m2ad6jcl" path="res://scenes/ui_layer.tscn" id="10_2wl34"]
-[ext_resource type="PackedScene" uid="uid://bfit664rguliw" path="res://scenes/managers/projectile_manager.tscn" id="11_id271"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l01ru"]
 size = Vector2(29, 37)
@@ -102,12 +100,6 @@ shape = SubResource("RectangleShape2D_l01ru")
 
 [node name="Player" parent="." instance=ExtResource("3_6lkiq")]
 position = Vector2(161, 247)
-
-[node name="UiLayer" parent="." instance=ExtResource("10_2wl34")]
-
-[node name="Projectile_Manager" parent="." instance=ExtResource("11_id271")]
-
-[node name="Projectile_Container" type="Node2D" parent="." groups=["Projectile_container"]]
+fire_rate = null
 
 [connection signal="body_entered" from="NextZone" to="." method="_on_next_zone_body_entered"]
-[connection signal="took_damage" from="Player" to="." method="_on_player_took_damage"]

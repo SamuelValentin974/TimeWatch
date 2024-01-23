@@ -1,0 +1,94 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch6dfoqdvl10c"]
+
+[ext_resource type="Script" path="res://scenes/lose_screen.gd" id="1_jjdwq"]
+[ext_resource type="FontFile" uid="uid://dct8501q0qoa0" path="res://asset/fonts/Kenney Pixel Square.ttf" id="1_x3c5p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5bned"]
+font = ExtResource("1_x3c5p")
+font_color = Color(0.2, 0, 0.643137, 1)
+outline_size = 1
+
+[node name="LoseScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jjdwq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 240.0
+color = Color(0, 0, 0, 0.364706)
+
+[node name="LoseLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.0
+offset_top = 25.0
+offset_right = 43.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.2, 0, 0.643137, 1)
+text = "YOU LOST"
+label_settings = SubResource("LabelSettings_5bned")
+
+[node name="BtReplay" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -15.5
+offset_right = 30.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2, 0, 0.643137, 1)
+theme_override_fonts/font = ExtResource("1_x3c5p")
+text = "Replay"
+
+[node name="BtMenu" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = 25.0
+offset_right = 41.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2, 0, 0.643137, 1)
+theme_override_fonts/font = ExtResource("1_x3c5p")
+text = "MENU"
+
+[node name="BtQuit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -59.0
+offset_right = 41.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.2, 0, 0.643137, 1)
+theme_override_fonts/font = ExtResource("1_x3c5p")
+text = "QUIT
+"
+
+[connection signal="pressed" from="BtReplay" to="." method="_on_bt_replay_pressed"]
+[connection signal="pressed" from="BtMenu" to="." method="_on_bt_menu_pressed"]
+[connection signal="pressed" from="BtQuit" to="." method="_on_bt_quit_pressed"]

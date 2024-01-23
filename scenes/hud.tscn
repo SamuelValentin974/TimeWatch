@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwcw2lxarv8r3"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_fdtyu"]
+[ext_resource type="FontFile" uid="uid://dct8501q0qoa0" path="res://asset/fonts/Kenney Pixel Square.ttf" id="1_oliq7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8lk87"]
+font = ExtResource("1_oliq7")
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fdtyu")
+
+[node name="LivesLabel" type="Label" parent="."]
+layout_mode = 1
+offset_right = 78.0
+offset_bottom = 24.0
+text = "Lives : 0"
+label_settings = SubResource("LabelSettings_8lk87")

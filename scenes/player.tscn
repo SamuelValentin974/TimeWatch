@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bdvom4xt10d85"]
+[gd_scene load_steps=35 format=3 uid="uid://bdvom4xt10d85"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1y0mn"]
 [ext_resource type="Resource" uid="uid://bhfyamkk0t00" path="res://ressources/projectile/bullet/basic_bullet_ressource.tres" id="2_nug7i"]
@@ -7,9 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://b3vvhil31q4x2" path="res://assets/player/player-run/player-run-1.png" id="4_ghwl8"]
 [ext_resource type="Texture2D" uid="uid://clxw4a78dg05v" path="res://assets/player/player-stand/player-stand-2.png" id="4_i60cp"]
 [ext_resource type="Texture2D" uid="uid://cfosglswcx42u" path="res://assets/player/player-run/player-run-2.png" id="5_d7slr"]
+[ext_resource type="Texture2D" uid="uid://qb1itk7btiyr" path="res://assets/player/player-hurt/player-hurt-1.png" id="5_dm2bg"]
 [ext_resource type="Texture2D" uid="uid://e6eg5yne4de0" path="res://assets/player/player-stand/player-stand-3.png" id="5_wbxnl"]
 [ext_resource type="Texture2D" uid="uid://c7f8eeyaf3vqc" path="res://assets/player/player-stand/player-stand-4.png" id="6_2f80w"]
 [ext_resource type="Texture2D" uid="uid://ddsny6r41hm3u" path="res://assets/player/player-run/player-run-3.png" id="6_apenb"]
+[ext_resource type="Texture2D" uid="uid://wyxhtuxm8s0i" path="res://assets/player/player-hurt/player-hurt-2.png" id="6_sqfya"]
 [ext_resource type="Texture2D" uid="uid://cutakbb52vtr7" path="res://assets/player/player-run/player-run-4.png" id="7_c8b1r"]
 [ext_resource type="Texture2D" uid="uid://xx2oyd7ai3uo" path="res://assets/player/player-run/player-run-5.png" id="8_yde6i"]
 [ext_resource type="Texture2D" uid="uid://81mju2kns45n" path="res://assets/player/player-run/player-run-6.png" id="9_5lrf6"]
@@ -40,6 +42,17 @@ animations = [{
 "loop": true,
 "name": &"dash",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_dm2bg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sqfya")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -160,7 +173,9 @@ projectile_ressource = ExtResource("2_nug7i")
 texture_filter = 1
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_tcrr4")
-animation = &"dash"
+animation = &"hurt"
+frame = 1
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.75, 1.5)

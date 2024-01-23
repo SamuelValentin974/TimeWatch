@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name PBullet
+class_name Bullet
 
 @onready var sprite_2d = $Sprite2D as Sprite2D
 @onready var visible_notifier = $VisibleNotifier as VisibleOnScreenNotifier2D

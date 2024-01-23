@@ -17,5 +17,5 @@ func _on_bt_quit_pressed():
 
 
 func _on_bt_play_pressed():
-	get_tree().change_scene_to_file("res://scene/level_1.tscn")
+	get_tree().change_scene_to_file("res://scenes/level_1.tscn")
 
